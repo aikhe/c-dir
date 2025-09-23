@@ -1,7 +1,6 @@
-#ifndef MYLIB_H
+#ifndef APPENDINT_H
+#define APPENDINT_H
 
-#define MYLIB_H
+void array_int_sample();
 
-void hello();
-
-#endif // MYLIB_H
+#endif

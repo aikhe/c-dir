@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// declare parameters of pointers, asteris so it can read and reflect changes to
+#include "append_int.h"
+
+// declare params pointer, asteris so it can read and reflect changes to
 // passed arguments from main function
 void append_int(int **arr, int *size, int *capacity, int value) {
   if (*size >= *capacity) {
@@ -41,6 +43,8 @@ int main() {
   // deallocate dynamic memory (prevents memory leak), used with realloc() &
   // malloc()
   free(arr);
+
+  array_int_sample();
 
   return 0;
 }
