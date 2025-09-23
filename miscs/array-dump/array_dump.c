@@ -7,7 +7,6 @@
 // passed arguments from main function
 void append_int(int **arr, int *size, int *capacity, int value) {
   if (*size >= *capacity) {
-
     // doubles capacity if 0
     *capacity = (*capacity == 0) ? 1 : (*capacity * 2);
     int *new_arr = realloc(*arr, (*capacity) * sizeof(int));
@@ -35,7 +34,6 @@ int main() {
     append_int(&arr, &size, &capacity, i);
   }
 
-  // print arr
   for (int i = 0; i < size; ++i) {
     printf("%d \n", arr[i]);
   }
@@ -44,7 +42,23 @@ int main() {
   // malloc()
   free(arr);
 
-  array_int_sample();
+  printf("\n");
+
+  // int *pSize = &size;
+  // printf("%d \n", *pSize);
+  // printf("%d \n", size);
+  //
+  // printf("\n");
+
+  for (int i = 0; i < 5; ++i) {
+    array_int_sample(&arr, &size, &capacity, i);
+  }
+
+  printf("\n");
+
+  for (int i = 0; i < size; ++i) {
+    printf("%d \n", arr[i]);
+  }
 
   return 0;
 }

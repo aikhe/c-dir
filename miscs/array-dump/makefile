@@ -9,7 +9,7 @@ ifeq ($(OS),Windows_NT)
 endif
 
 $(TARGET): $(OBJ)
-	$(CC) $(CFLAGS) -o $(TARGET) $(SRC)
+	$(CC) $(CFLAGS) -o $(TARGET) $(OBJ)
 
 run: $(TARGET)
 	./$(TARGET)
