@@ -17,8 +17,5 @@ int main() {
     current = current->next;
   }
 
-  printf("\n");
-  printf("ID: %d, Yaps: %s", cope->id, cope->yaps);
-
   return 0;
 }

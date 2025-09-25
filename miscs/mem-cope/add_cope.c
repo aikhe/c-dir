@@ -12,18 +12,16 @@ void addCope(Copium **head, int id, char *yaps) {
   strcpy(newCope->yaps, yaps);
   newCope->next = NULL;
 
-  if (*head == NULL) {
-    printf("%d\n", newCope->id);
-
-    *head = newCope;
-  } else {
-    printf("%d\n", newCope->id);
-
-    Copium *current = *head;
-    while (current->next != NULL) {
-      current = current->next;
-    }
-
-    current->next = newCope;
+  // traverse node so that sequence is right so
+  // ex. 1, 2, 3 instead of 3, 2, 1
+  Copium **indirect =
+      head; // pointer to a ppointer to handle both empty/non-empty (t/f)
+  printf("indirect pointer: %p\n",
+         (void *)*indirect);         // %p expect a void pointer
+  while (*indirect != NULL) {        // checks if indirect has value
+    indirect = &((*indirect)->next); // points indirect to the next node
+    printf("next node\n");
   }
+
+  *indirect = newCope; // now inserts new cope if node before has value
 }
