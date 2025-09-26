@@ -6,9 +6,18 @@
 int main() {
   Copium *cope = NULL;
 
-  addCope(1, "Some yapping");
+  addCope(&cope, 1, "Some yapping");
+  addCope(&cope, 2, "Insane yap");
+  addCope(&cope, 3, "Giga yapfest");
 
   printf("Yappings:\n");
+  Copium *current = cope;
+  while (current) {
+    printf("ID: %d, Yaps: %s\n", current->id, current->yaps);
+    current = current->next;
+  }
+
+  printf("\n");
   printf("ID: %d, Yaps: %s", cope->id, cope->yaps);
 
   return 0;

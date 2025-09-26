@@ -4,6 +4,7 @@
 typedef struct Copium {
   int id;
   char *yaps;
+  struct Copium *next;
 } Copium;
 
 #endif
