@@ -15,7 +15,7 @@ void addCope(Copium **head, int id, char *yaps) {
   // traverse node so that sequence is right so
   // ex. 1, 2, 3 instead of 3, 2, 1
   Copium **indirect =
-      head; // pointer to a ppointer to handle both empty/non-empty (t/f)
+      head; // pointer to a pointer to handle both empty/non-empty (t/f)
   printf("indirect pointer: %p\n",
          (void *)*indirect);         // %p expect a void pointer
   while (*indirect != NULL) {        // checks if indirect has value
@@ -23,5 +23,6 @@ void addCope(Copium **head, int id, char *yaps) {
     printf("next node\n");
   }
 
-  *indirect = newCope; // now inserts new cope if node before has value
+  *indirect = newCope; // now inserts new cope if node before has value & points
+                       // to next node
 }
