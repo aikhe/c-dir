@@ -5,23 +5,27 @@ PROGRAM ?= argc_argv
 MAIN = $(PROGRAM).c
 SRC = $(wildcard $(PROGRAM)/*.c)
 OBJ = $(patsubst $(PROGRAM)/%.c, $(BUILD_DIR)/%.o, $(SRC))
-BUILD_DIR = ./builds/$(PROGRAM)
-BUILD = $(BUILD_DIR)/$(PROGRAM)
+BUILD = ./builds/$(PROGRAM)/$(PROGRAM)
 
-RM = rm -rf
-MKDIR = mkdir -p
 ifeq ($(OS),Windows_NT)
-    RM = rmdir /S /Q
-    MKDIR = powershell -Command "if (-not (Test-Path '$(BUILD_DIR)')) { mkdir '$(BUILD_DIR)' }"
+	BUILD_DIR = .\builds\$(PROGRAM)
+
+	RM = rmdir /S /Q
+	MKDIR = mkdir
+else
+	BUILD_DIR = ./builds/(PROGRAM)
+
+	RM = rm -rf
+	MKDIR = mkdir -pa
 endif
 
 $(BUILD_DIR):
-	$(MKDIR)
+	$(MKDIR) $(BUILD_DIR)
 
 $(PROGRAM): ./$(MAIN) | $(BUILD_DIR)
 	$(CC) $(CFLAGS) -o $(BUILD) ./$(MAIN)
 
-gemini_rest: ./gemini_rest.c | $(BUILD_DIR)
+gemini_rest: $(MAIN) | $(BUILD_DIR)
 	$(CC) gemini_rest.c -I"../include" -L"../lib" -lcurl -o ./builds/gemini_rest/gemini_rest
 
 run: $(PROGRAM)
