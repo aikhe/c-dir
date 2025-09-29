@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "append_int.h"
+#include "array_dump/append_int.h"
 
 int main() {
   int *arr = NULL;
