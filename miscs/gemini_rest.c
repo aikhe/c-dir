@@ -38,7 +38,7 @@ int main(void) {
   CURL *curl;
   CURLcode res;
 
-  const char *api_key = getenv("GEMINI_API_KEY");
+  const char *api_key = "AIzaSyBZgEPTqbz8MwbuXV1LAgEguqBKiL9Y_DY";
   if (!api_key) {
     fprintf(stderr, "GEMINI_API_KEY environment variable not set.\n");
     return 1;
