@@ -18,8 +18,15 @@ endif
 $(BUILD):
 	$(MKDIR) $(BUILD_DIR)
 
-$(PROGRAM): ./argc_argv.c | $(BUILD)
+$(PROGRAM): ./$(MAIN) | $(BUILD)
 	$(CC) $(CFLAGS) -o $(BUILD) ./argc_argv.c
+
+gemini_rest: ./gemini_rest.c | $(BUILD)
+	$(CC) gemini_rest.c -I"../include" -L"../lib" -lcurl -o ./builds/gemini_rest/gemini_rest
+
+grun:
+	./builds/gemini_rest/gemini_rest
+
 
 run: $(PROGRAM)
 	$(BUILD)
