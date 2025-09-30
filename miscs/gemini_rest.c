@@ -17,8 +17,8 @@ size_t write_callback(void *ptr, size_t size, size_t nmemb, void *userdata) {
   struct Memory *mem = (struct Memory *)userdata;
 
   /* 1) Print chunk immediately so user sees streaming output */
-  fwrite(ptr, size, nmemb, stdout);
-  fflush(stdout);
+  // fwrite(ptr, size, nmemb, stdout);
+  // fflush(stdout);
 
   /* 2) Append to dynamic buffer so we still have the full response later */
   char *temp = realloc(mem->response, mem->size + total + 1);
@@ -105,7 +105,7 @@ int main(void) {
 
     /* Perform request */
     printf("=== Streaming response start ===\n");
-    fflush(stdout);
+    // fflush(stdout);
 
     res = curl_easy_perform(curl);
 
@@ -117,7 +117,7 @@ int main(void) {
               curl_easy_strerror(res));
     } else {
       /* Optionally inspect the full response stored in mem.response */
-      /* printf("\nFull response:\n%s\n", mem.response); */
+      printf("\nFull response:\n%s\n", mem.response);
     }
 
     curl_slist_free_all(headers);
